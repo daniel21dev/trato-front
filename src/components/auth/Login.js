@@ -4,12 +4,13 @@ import AuthLayout from './AuthLayout'
 import { LoginForm } from './LoginForm'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { LoginAction } from '../../actions/authActions'
 
 export const Login = () => {
 
     const dispatch = useDispatch()
+    const { error, loading } = useSelector( state => state.auth )
 
     const formik = useFormik({
         initialValues:{
@@ -37,6 +38,7 @@ export const Login = () => {
                 </section>
                 <section className="mt-10">
 
+                { error && <p>Hubo un error </p>}
                 <LoginForm formik={ formik }/>
 
                 </section>

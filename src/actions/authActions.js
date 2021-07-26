@@ -47,3 +47,14 @@ const loginSuccess = ({user,token = null}) =>({
 const loginError = () =>({
     type: types.POST_LOGIN_ERROR
 })
+
+/** LOGOUT */
+
+export const logoutAction = () =>{
+    return dispatch =>{
+        localStorage.removeItem('token')
+        dispatch({
+            type: types.LOGOUT
+        })
+    }
+}
