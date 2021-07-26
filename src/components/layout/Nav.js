@@ -23,10 +23,10 @@ export const Nav = () => {
         <ul className="flex">
           
           {/*Regular Link*/}
-          <li className="hover:bg-blue-800 hover:text-white">
+          <li className="hover:bg-blue-800 hover:text-white hidden md:block">
             <a href="#" className="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">Nuevo trato</a>
           </li>
-          <li className="hover:bg-blue-800 hover:text-white">
+          <li className="hover:bg-blue-800 hover:text-white hidden md:block">
             <a href="#" className="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">Tratos</a>
           </li>
           {/*Toggleable Link*/}
