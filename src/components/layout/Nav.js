@@ -41,13 +41,6 @@ export const Nav = () => {
               </div>
             </div>
           </li>
-          {/* ## Toggleable Link Template ##
-    
-          <li class="toggleable"><input type="checkbox" value="selected" id="toggle-xxx" class="toggle-input"><label for="toggle-xxx" class="cursor-pointer">Click</label><div role="toggle" class="mega-menu">
-          Add your mega menu content
-          </div></li>
-          
-          */}
           
         </ul>
       </div>

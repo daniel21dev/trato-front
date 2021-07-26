@@ -18,7 +18,7 @@ const authReducer = ( state = initialState, action ) =>{
         case types.POST_LOGIN_SUCCESS:
             return {
                 ...state,
-                token: action.payload.token,
+                token: action.payload.token ? action.payload.token : localStorage.getItem('token'),
                 user: action.payload.user,
                 loading: false,
                 error: false
