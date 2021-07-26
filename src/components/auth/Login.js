@@ -6,6 +6,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { LoginAction } from '../../actions/authActions'
+import { Alert } from '../utils/Alert'
 
 export const Login = () => {
 
@@ -37,14 +38,14 @@ export const Login = () => {
                     <p className="text-gray-600 pt-2">Sign in to your account.</p>
                 </section>
                 <section className="mt-10">
-
-                { error && <p>Hubo un error </p>}
+                { error && <Alert type="error" msg={ error }/>}
+                { loading && <Alert type="info" msg="Cargando..."/>}
                 <LoginForm formik={ formik }/>
 
                 </section>
 
                 <div className="max-w-lg mx-auto text-center mt-12 mb-6">
-                    <p className="text-black">Don't have an account? 
+                    <p className="text-black">¿No tienes una cuenta? 
                         <Link to='/signup' className="underline"> Sign Up</Link>.
                     </p>
                 </div>

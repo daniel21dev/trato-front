@@ -1,6 +1,7 @@
 import axiosClient from "../config/axios";
 import types from "../types";
 
+/** LOGIN */
 export const LoginAction = ( email, password ) =>{
     return async dispatch =>{
         dispatch( postLogin() )
@@ -14,7 +15,11 @@ export const LoginAction = ( email, password ) =>{
             dispatch( loginSuccess( data ) )
         } catch (error) {
             localStorage.removeItem('token')
-            dispatch( loginError( error ) )
+            dispatch( loginError( error.response.data.msg ) )
+
+            setTimeout(()=>{
+                dispatch( removeError() )
+            }, 3000)
         }
     }
 }
@@ -44,8 +49,47 @@ const loginSuccess = ({user,token = null}) =>({
     payload: {user,token}
 })
 
-const loginError = () =>({
-    type: types.POST_LOGIN_ERROR
+const loginError = ( error ) =>({
+    type: types.POST_LOGIN_ERROR,
+    payload: error
+})
+
+/** SINGUP */
+export const signupAction = ( name, email, password ) =>{
+    return async dispatch =>{
+        dispatch( signup() )
+        try {
+            const { data } = await axiosClient.post('/users',{
+                name,
+                email,
+                password
+            })
+
+            localStorage.setItem('token', data.token )
+            dispatch( signupSuccess( data ) )
+        } catch (error) {
+            localStorage.removeItem('token')
+            dispatch( signupError( error.response.data.errors[0].msg ) )
+
+            setTimeout(()=>{
+                dispatch( removeError() )
+            }, 3000)
+        }
+    }
+}
+
+const signup = () =>({
+    type: types.SIGNUP
+})
+
+const signupSuccess = ({user,token}) =>({
+    type: types.SIGNUP_SUCCESS,
+    payload: {user,token}
+})
+
+const signupError = ( error ) =>({
+    type: types.SIGNUP_ERROR,
+    payload: error
 })
 
 /** LOGOUT */
@@ -58,3 +102,7 @@ export const logoutAction = () =>{
         })
     }
 }
+
+const removeError = () =>({
+    type: types.REMOVE_ERROR
+})

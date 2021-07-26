@@ -6,13 +6,30 @@ const SignUpForm = ({ formik }) => {
         <form className="flex flex-col" 
                 onSubmit={ formik.handleSubmit }
             >
+
+            { formik.touched.name && formik.errors.name ?(
+                    <Alert type="error" msg={ formik.errors.name }/>
+            ): null }
+            <div className="mb-6 pt-3 rounded bg-gray-200">
+                <label className="block text-gray-700 text-sm font-bold mb-2 ml-3" htmlFor="name">Name</label>
+                <input 
+                    className={`bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3 ${ formik.touched.name && formik.errors.name && 'border-red-600' }`}  
+                    type="text" 
+                    id="name"
+                    name="name"
+                    onChange={ formik.handleChange }
+                    onBlur={ formik.handleBlur }
+                    value={ formik.values.name }
+                />
+            </div>
+
             { formik.touched.email && formik.errors.email ?(
                     <Alert type="error" msg={ formik.errors.email }/>
             ): null }
             <div className="mb-6 pt-3 rounded bg-gray-200">
                 <label className="block text-gray-700 text-sm font-bold mb-2 ml-3" htmlFor="email">Email</label>
                 <input 
-                    className={`bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3 ${ formik.errors.email && 'border-red-600' }`}  
+                    className={`bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3 ${ formik.touched.email && formik.errors.email && 'border-red-600' }`}  
                     type="text" 
                     id="email"
                     name="email"
@@ -28,7 +45,7 @@ const SignUpForm = ({ formik }) => {
             <div className="mb-6 pt-3 rounded bg-gray-200">
                 <label className="block text-gray-700 text-sm font-bold mb-2 ml-3" htmlFor="password">Password</label>
                 <input 
-                    className={`bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3 ${ formik.errors.password && 'border-red-600' }`} 
+                    className={`bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3 ${formik.touched.password && formik.errors.password && 'border-red-600' }`} 
                     type="password" 
                     id="password"
                     onChange={ formik.handleChange }

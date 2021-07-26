@@ -1,7 +1,9 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Alert } from '../utils/Alert'
 
 export const LoginForm = ({ formik }) => {
+
     return (
         <form className="flex flex-col" 
                 onSubmit={ formik.handleSubmit }

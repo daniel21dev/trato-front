@@ -4,24 +4,33 @@ import AuthLayout from './AuthLayout'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import SignUpForm from './SignUpForm'
+import { useDispatch, useSelector } from 'react-redux'
+import { Alert } from '../utils/Alert'
+import { signupAction } from '../../actions/authActions'
 
 export const SignUp = () => {
 
+    const dispatch = useDispatch()
+    const { error, loading } = useSelector( state => state.auth )
+
     const formik = useFormik({
         initialValues:{
+            name: '',
             email: '',
             password: ''
         },
         validationSchema: Yup.object({
+            name: Yup.string()
+                .required('El mombre es obligatorio'),
             email: Yup.string()
                 .email('el email no es valido')
                 .required('El email no puede ir vacio'),
             password: Yup.string()
                 .required('El password es obligatorio')
         }),
-        onSubmit: async valores =>{
-            console.log( valores );
-        }
+        onSubmit: async ({name,email,password}) =>{
+            dispatch( signupAction(name,email,password) )
+        }   
     })
 
     return (
@@ -32,6 +41,9 @@ export const SignUp = () => {
                     <p className="text-gray-600 pt-2">Sign in to your account.</p>
                 </section>
                 <section className="mt-10">
+
+                { error && <Alert type="error" msg={ error }/>}
+                { loading && <Alert type="info" msg="Cargando..."/>}
 
                 <SignUpForm formik={ formik }/>
 
