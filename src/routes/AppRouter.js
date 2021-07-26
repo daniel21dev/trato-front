@@ -9,6 +9,8 @@ import { getMeAction } from '../actions/authActions';
 import { Login } from '../components/auth/Login';
 import { SignUp } from '../components/auth/SignUp';
 import { Home } from '../components/Home';
+import { NuevoTrato } from '../components/NuevoTrato';
+import { Tratos } from '../components/Tratos';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
@@ -34,6 +36,8 @@ export const AppRouter = () => {
         <Router>
             <Switch>
                 <PrivateRoute exact path='/' component={ Home } isAuthenticated={ !!user }/>
+                <PrivateRoute exact path='/nuevotrato' component={ NuevoTrato } isAuthenticated={ !!user }/>
+                <PrivateRoute exact path='/tratos' component={ Tratos } isAuthenticated={ !!user } />
                 <PublicRoute path='/login' component={ Login } isAuthenticated={ !!user  }/>
                 <PublicRoute path='/signup' component={ SignUp } isAuthenticated={ !!user }/>
                 <Redirect to='/'/>

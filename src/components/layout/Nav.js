@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './nav.css'
 import { logoutAction } from '../../actions/authActions'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 export const Nav = () => {
 
@@ -24,10 +24,10 @@ export const Nav = () => {
           
           {/*Regular Link*/}
           <li className="hover:bg-blue-800 hover:text-white hidden md:block">
-            <a href="#" className="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">Nuevo trato</a>
+            <Link to='/nuevotrato' className="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">Nuevo trato</Link>
           </li>
           <li className="hover:bg-blue-800 hover:text-white hidden md:block">
-            <a href="#" className="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">Tratos</a>
+            <Link to='/tratos' className="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">Tratos</Link>
           </li>
           {/*Toggleable Link*/}
 
