@@ -32,7 +32,7 @@ export const Alert = ({ type='info', msg = 'message' }) => {
     }
 
     return (
-        <div className={`bg-${ alertType[type].color}-100 p-5 w-full sm:w-1/2 border-l-4 border-${ alertType[type].color}-500 shadow`}>
+        <div className={`bg-${ alertType[type].color}-100 p-5 w-full border-l-4 border-${ alertType[type].color}-500 shadow my-1`}>
               <div className="flex space-x-3">
                 { alertType[type].logo() }
                 <div className={`flex-1 leading-tight text-sm text-${ alertType[type].color}-700`}>{ msg }</div>

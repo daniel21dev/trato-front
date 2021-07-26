@@ -2,6 +2,7 @@ import React from 'react'
 import './nav.css'
 
 export const Nav = () => {
+
     return (
       <nav className="relative bg-white border-b-2 border-gray-300 text-gray-900">
         
@@ -24,7 +25,7 @@ export const Nav = () => {
             <label htmlFor="toggle-one" className="block cursor-pointer py-6 px-4 lg:p-6 text-sm lg:text-base font-bold">Click</label>
 
             <div role="toggle" className="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-800 sm:w-full md:w-1/2 lg:w-1/3">
-              <div className="container mx-auto w-full flex flex-wrap justify-between mx-2">
+              <div className="container mx-auto w-full flex flex-wrap justify-between">
 
                 <ul className="px-4 sm:w-full  pb-6 pt-6 lg:pt-3">
                   <h3 className="font-bold text-xl text-white text-bold mb-2">Usuario</h3>
