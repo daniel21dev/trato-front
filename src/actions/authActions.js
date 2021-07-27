@@ -35,7 +35,7 @@ export const getMeAction = ( token ) =>{
             dispatch( loginSuccess( data ) )
         } catch (error) {
             localStorage.removeItem('token')
-            dispatch( loginError( error ) )
+            dispatch( loginError( error.response.data.msg ) )
         }
     }
 }
